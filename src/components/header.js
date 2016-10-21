@@ -8,15 +8,24 @@ import * as actions from '../actions';
 
 class Header extends Component {
 
-    authButton() {
+    // static contextTypes = { // "static" make Authentication.contextTypes instance
+    //     router: React.PropTypes.object
+    // }
+    //
+    // leave() {
+    //     this.context.router.push("/");
+    // }
 
-        console.log(this.props)
+    authButton() {
+        console.log(this.context);
 
         if (this.props.authenticated) {
-            return <button onClick={() => this.props.authenticate(false)}>Sign Out</button>;
+            return <button onClick={() => (this.props.authenticate(false))}>Sign Out</button>;
         }
 
-        return <button onClick={() => this.props.authenticate(true)}>Sign in</button>;
+        return (
+            <button onClick={() => this.props.authenticate(true)}>Sign in</button>
+                );
     }
 
     render() {
